@@ -17,17 +17,7 @@ body {
     text-align: center;
 }
 
-.video-stream {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-}
 
-.video {
-    width: 100%;
-    max-width: 800px;
-    border: 2px solid #35424a;
-}
 
 .face-recognition-status {
     margin-top: 20px;

@@ -1,30 +1,21 @@
 # FaceGuard Application
 
-FaceGuard is a web application that streams live video from a Raspberry Pi 5 equipped with Camera 3 and implements an AI face recognition system. This project aims to provide real-time video streaming and face recognition capabilities for various applications, including security and monitoring.
+FaceGuard is a web application that displays detection and notification data from a Supabase database. It's focused on presenting recent detections, historical records, and notifications for review and reporting.
 
 ## Features
 
-- Live video streaming from Raspberry Pi camera
-- AI-powered face recognition
-- User-friendly dashboard to monitor video and recognition status
+- Recent detection notifications
+- Historical detection records with export
+- Simple, data-focused UI for monitoring and reporting
 
 ## Project Structure
 
 ```
 faceguard-app
 ├── src
-│   ├── server
-│   │   ├── app.ts                # Entry point for the server application
-│   │   ├── routes
-│   │   │   └── video.ts          # Routes for video streaming
-│   │   ├── controllers
-│   │   │   └── faceRecognitionController.ts # Face recognition logic
-│   │   └── utils
-│   │       └── cameraStream.ts   # Utility for camera streaming
 │   ├── client
 │   │   ├── components
-│   │   │   ├── Dashboard.tsx      # Main dashboard component
-│   │   │   ├── VideoStream.tsx    # Component for rendering video stream
+│   │   │   ├── Dashboard.tsx      # Main layout / navigation
 │   │   │   └── FaceRecognitionStatus.tsx # Component for recognition status
 │   │   ├── pages
 │   │   │   └── App.tsx           # Main application component
@@ -50,18 +41,21 @@ faceguard-app
    npm install
    ```
 
-3. Set up the Raspberry Pi camera and ensure it is properly configured.
+3. (Optional) Configure any data sources or detection pipelines that insert detection records into the Supabase database.
 
 ## Usage
 
-1. Start the server:
-   ```
-   npm run start
-   ```
+Local development:
 
-2. Open your web browser and navigate to `http://localhost:3000` to access the application.
+1. Install dependencies: `npm install`
+2. Start the dev server: `npm start` (opens at http://localhost:3000)
 
-3. Use the dashboard to start the video stream and monitor face recognition status.
+Production build & deploy:
+
+- Build: `npm run build` (outputs to `dist`)
+- Deploy `dist` to a static host (Vercel, Netlify, etc.)
+
+This project is focused on displaying detection and notification data from Supabase.
 
 ## Contributing
 
