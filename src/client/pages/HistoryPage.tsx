@@ -68,40 +68,8 @@ const HistoryPage: React.FC = () => {
     return matchesSearch && matchesType;
   });
 
-  const handleExportCSV = () => {
-    if (filteredDetections.length === 0) return;
+  // Export to CSV removed (no longer needed)
 
-    const headers = ['Name', 'Type', 'Timestamp', 'Image'];
-    const rows = filteredDetections.map(d => [
-      `"${d.name || ''}"`,
-      `"${d.type || ''}"`,
-      `"${d.timestamp ? new Date(d.timestamp).toLocaleString() : ''}"`,
-      `"${d.image || ''}"`
-    ]);
-    const csvContent =
-      headers.join(',') + '\n' +
-      rows.map(row => row.join(',')).join('\n');
-
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-
-    // Format date as YYYY-MM-DD
-    const today = new Date();
-    const yyyy = today.getFullYear();
-    const mm = String(today.getMonth() + 1).padStart(2, '0');
-    const dd = String(today.getDate()).padStart(2, '0');
-    const dateString = `${yyyy}-${mm}-${dd}`;
-
-    const filename = `Detection History (${dateString}).csv`;
-
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  };
 
   return (
     <div style={{ background: '#f7f8fa', minHeight: '100vh', padding: '32px' }}>
@@ -157,22 +125,6 @@ const HistoryPage: React.FC = () => {
             </option>
           ))}
         </select>
-        <button
-          style={{
-            background: '#22c55e',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '8px',
-            padding: '10px 24px',
-            fontWeight: 600,
-            fontSize: '16px',
-            cursor: 'pointer',
-            marginLeft: 'auto',
-          }}
-          onClick={handleExportCSV}
-        >
-          Export to CSV
-        </button>
       </div>
       <div
         style={{
